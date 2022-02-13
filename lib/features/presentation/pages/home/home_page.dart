@@ -1,3 +1,6 @@
+import 'package:easy_cook/features/data/datasources/remote_datasource.dart';
+import 'package:easy_cook/features/data/model/home_food.dart';
+import 'package:easy_cook/features/presentation/pages/home/home_food_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_cook/features/presentation/routes/route.dart' as route;
@@ -10,6 +13,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List<HomeFood> listData = [];
+
+
+  void getData() async {
+    // 2 => Membuat objek RemoteDataSources
+    RemoteDatasource data = RemoteDatasource();
+
+    // 3 => Panggil fungsi yang ada di dalam RemoteDataSoruce dan program akan menunggu disini
+    var response = await data.getHomeData();
+
+    // 9 => setelah beberapa detik variable response sudah ada isinya dan memasukkan ke dalam listData
+    listData.addAll(response);
+
+    // 10 => Flutter akan me refresh halaman dengan data yang baru
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    // 1 => Panggil data ketika aplikasi dibuka
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +48,18 @@ class _HomePageState extends State<HomePage> {
             Text('Home Page. Hello World'),
             OutlinedButton(onPressed: (){
               Navigator.pushNamed(context, route.detailPage);
-            }, child: Text('Detail Page'))
+            }, child: Text('Detail Page')),
+            const SizedBox(height: 32,),
+            Text('Total Item Saat Ini ${listData.length}'),
+            const SizedBox(height: 16,),
+            ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                itemCount: listData.length,
+                itemBuilder: (context, position){
+                  return HomeFoodWidget(foodData: listData[position]);
+                }
+            )
           ],
         ),
       ),
