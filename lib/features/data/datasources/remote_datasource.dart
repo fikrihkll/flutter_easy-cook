@@ -8,7 +8,7 @@ class RemoteDatasource {
   RemoteDatasource();
 
   // 4 => Di panggil dari Home
-  Future<List<HomeFood>> getHomeData() async {
+  static Future<List<HomeFood>> getHomeData() async {
 
     var url = Uri.parse('https://www.themealdb.com/api/json/v1/1/search.php?f=a');
     var client = http.Client();
