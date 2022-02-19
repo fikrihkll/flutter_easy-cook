@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:easy_cook/features/data/datasources/remote_dataCategory.dart';
 import 'package:easy_cook/features/data/datasources/remote_datasource.dart';
 import 'package:easy_cook/features/data/model/home_food.dart';
 import 'package:easy_cook/features/presentation/pages/home/home_food_category.dart';
@@ -56,9 +55,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   void getDataCategory() async{
-    RemoteDataCategory data =RemoteDataCategory();
+    RemoteDatasource data = RemoteDatasource();
 
-    var response = await RemoteDataCategory.getHomeCategory();
+    var response = await data.getHomeCategory();
 
     listCategory.addAll(response);
 
@@ -68,12 +67,7 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-  Future<void> getHomeCategory() async {
-    listCategory = await RemoteDataCategory.getHomeCategory();
-    setState(() {
-      _isLoading = false;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
