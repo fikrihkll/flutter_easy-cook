@@ -1,20 +1,91 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:easy_cook/features/data/model/home_food.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class HomeFoodWidget extends StatelessWidget {
-
   HomeFood foodData;
 
   HomeFoodWidget({Key? key, required this.foodData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, left: 20 * 2, right: 20),
+      child: Stack(
         children: [
-          Text(foodData.name),
-          Text(foodData.category),
-          Text(foodData.origin),
+          Positioned(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Container(
+                  height: 400,
+                  width: 350,
+                  child: Image.network(
+                    foodData.imgUrl,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            height: 45,
+            width: 90,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Center(
+                child: Text(
+                  foodData.category,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left: 20,
+            height: 150,
+            width: MediaQuery.of(context).size.width / 1.75,
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        foodData.name,
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        foodData.origin,
+                        style: TextStyle(
+                            fontSize: 22,
+                            height: 1.5,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400),
+                      )
+                    ],
+                  ),
+                )),
+          ),
         ],
       ),
     );
