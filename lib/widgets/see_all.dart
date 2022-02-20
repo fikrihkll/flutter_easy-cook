@@ -8,7 +8,7 @@ class See_Container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 20 * 2, right: 20 * 2),
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: Container(
         height: 120,
         width: MediaQuery.of(context).size.width,
@@ -33,11 +33,11 @@ class See_Container extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 25),
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: Colors.indigo[200]),
                           children: const <TextSpan>[
@@ -55,7 +55,7 @@ class See_Container extends StatelessWidget {
                       "See All",
                       style: TextStyle(
                         color: Colors.green,
-                        fontSize: 22,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.underline
                       ),

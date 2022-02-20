@@ -13,10 +13,10 @@ class Hello_Profile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20 * 4, left: 20 * 2),
+              padding: const EdgeInsets.only(top: 20 * 4, left: 20),
               child: Container(
-                height: 100,
-                width: 330,
+                height: 80,
+                width: 250,
                 child: Column(
                   children: [
                     Align(
@@ -24,7 +24,7 @@ class Hello_Profile extends StatelessWidget {
                       child: Text(
                         "Hello $user",
                         style: TextStyle(
-                            fontSize: 36,
+                            fontSize: 26,
                             color: Colors.green[400],
                             fontWeight: FontWeight.bold),
                       ),
@@ -37,7 +37,7 @@ class Hello_Profile extends StatelessWidget {
                       child: Text(
                         "What you want to cook today?",
                         style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 16,
                             color: Colors.grey.shade500,
                             fontWeight: FontWeight.w500),
                       ),
@@ -47,12 +47,12 @@ class Hello_Profile extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20 * 2, right: 20 * 2),
+              padding: const EdgeInsets.only(top: 20 * 2, right: 20 ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
-                  height: 70,
-                  width: 70,
+                  height: 55,
+                  width: 55,
                   child: Image.asset(
                     "images/foto.jpg",
                     fit: BoxFit.fill,

@@ -13,7 +13,7 @@ class HomeFoodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 20 * 2, right: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Stack(
         children: [
           Positioned(
@@ -22,8 +22,8 @@ class HomeFoodWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(40),
                 child: Container(
-                  height: 400,
-                  width: 350,
+                  height: 300,
+                  width: 300,
                   child: Image.network(
                     foodData.imgUrl,
                     fit: BoxFit.cover,
@@ -47,7 +47,7 @@ class HomeFoodWidget extends StatelessWidget {
                   foodData.category,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w500),
                 ),
               ),
@@ -55,12 +55,12 @@ class HomeFoodWidget extends StatelessWidget {
           ),
           Positioned(
             bottom: 20,
-            left: 20,
-            height: 150,
-            width: MediaQuery.of(context).size.width / 1.75,
+            left: 17,
+            height: 120,
+            width: MediaQuery.of(context).size.width / 1.55,
             child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.6),
+                    color: Colors.black.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(15)),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -70,14 +70,14 @@ class HomeFoodWidget extends StatelessWidget {
                       Text(
                         foodData.name,
                         style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
                       Text(
                         foodData.origin,
                         style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 18,
                             height: 1.5,
                             color: Colors.white,
                             fontWeight: FontWeight.w400),
