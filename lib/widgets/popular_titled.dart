@@ -14,13 +14,13 @@ class Popular_Titled extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: EdgeInsets.only(top: 20 * 2, left: 20 * 2),
+        padding: EdgeInsets.only(top: 20, left: 20),
         child: Text(
           "$titled",
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w500,
-              fontSize: 26
+              fontSize: 20
           ),
         ),
       ),

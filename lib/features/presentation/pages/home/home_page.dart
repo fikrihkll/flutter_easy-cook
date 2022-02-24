@@ -84,8 +84,9 @@ class _HomePageState extends State<HomePage> {
                 Popular_Titled(
                   titled: 'Popular Recipe',
                 ),
+                SizedBox(height: 20,),
                 SizedBox(
-                  height: 400,
+                  height: 300,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                       primary: false,
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                   titled: 'Category',
                 ),
                 SizedBox(
-                  height: 400,
+                  height: 200,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       primary: false,

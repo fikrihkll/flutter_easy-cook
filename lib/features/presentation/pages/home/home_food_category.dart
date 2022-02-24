@@ -15,28 +15,28 @@ class category_widget extends StatelessWidget {
       children: [
         Stack(children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20, left: 20*2, right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
-                height: 200,
-                width: 400,
+                height: 150,
+                width: 300,
                 decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.2),
                 ),
                 child: Image.network(
                     categoryData.image,
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           Positioned(
             bottom: 0,
-            left: 40,
+            left: 10,
             child: Container(
-              height: 200,
-              width: 400,
+              height: 150,
+              width: 300,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(
@@ -48,8 +48,8 @@ class category_widget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 145,
-            top: 90,
+            left: 60,
+            top: 65,
             height: 60,
             width: 200,
             child: Container(
@@ -58,7 +58,7 @@ class category_widget extends StatelessWidget {
                   categoryData.category,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 28,
+                      fontSize: 24,
                       fontWeight: FontWeight.w500,
                   ),
                 ),
