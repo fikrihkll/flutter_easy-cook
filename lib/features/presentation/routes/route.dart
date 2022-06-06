@@ -14,10 +14,10 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(
           builder: (context) => HomePage()
       );
-    case detailPage:
-      return MaterialPageRoute(
-          builder: (context) => DetailPage()
-      );
+    // case detailPage:
+    //   return MaterialPageRoute(
+    //       builder: (context) => DetailPage(foodData: ,)
+    //   );
     case searchPage:
       return MaterialPageRoute(
           builder: (context) => SearchPage()

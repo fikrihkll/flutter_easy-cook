@@ -2,6 +2,7 @@
 
 import 'package:easy_cook/features/data/datasources/remote_datasource.dart';
 import 'package:easy_cook/features/data/model/home_food.dart';
+import 'package:easy_cook/features/presentation/pages/detail/detail_page.dart';
 import 'package:easy_cook/features/presentation/pages/home/home_food_category.dart';
 import 'package:easy_cook/features/presentation/pages/home/home_food_widget.dart';
 import 'package:easy_cook/widgets/popular_titled.dart';
@@ -9,6 +10,7 @@ import 'package:easy_cook/widgets/search_bar.dart';
 import 'package:easy_cook/widgets/see_all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_cook/features/presentation/pages/detail/detail_page.dart';
 import 'package:easy_cook/features/presentation/routes/route.dart' as route;
 
 import '../../../../widgets/hello_profile.dart';
@@ -39,13 +41,23 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  void getDataCategory() async {
+    RemoteDatasource data = RemoteDatasource();
+
+    var response = await data.getHomeCategory();
+
+    listCategory.addAll(response);
+
+    setState(() {});
+  }
+
   @override
   void initState() {
     // 1 => Panggil data ketika aplikasi dibuka
     getData();
     getDataCategory();
   }
-  
+
   //baru ditambahkan
   Future<void> getHomeData() async {
     listData = await RemoteDatasource.getHomeData();
@@ -53,21 +65,6 @@ class _HomePageState extends State<HomePage> {
       _isLoading = false;
     });
   }
-
-  void getDataCategory() async{
-    RemoteDatasource data = RemoteDatasource();
-
-    var response = await data.getHomeCategory();
-
-    listCategory.addAll(response);
-
-    setState(() {
-
-    });
-
-  }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,17 +81,36 @@ class _HomePageState extends State<HomePage> {
                 Popular_Titled(
                   titled: 'Popular Recipe',
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                   height: 300,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: listData.length,
-                      itemBuilder: (context, position) {
-                        return HomeFoodWidget(foodData: listData[position]);
-                      }),
+                  child: !_isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(color: Colors.amber),
+                        )
+                      : ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          primary: false,
+                          shrinkWrap: true,
+                          itemCount: listData.length,
+                          itemBuilder: (context, position) {
+                            return GestureDetector(
+                              child:
+                                  HomeFoodWidget(foodData: listData[position]),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        DetailPage(
+                                            foodData: listData[position]),
+                                  ),
+                                );
+                              },
+                            );
+                          }),
                 ),
                 Popular_Titled(
                   titled: 'Category',
@@ -107,7 +123,8 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemCount: listCategory.length,
                       itemBuilder: (context, position) {
-                        return category_widget(categoryData: listCategory[position]);
+                        return category_widget(
+                            categoryData: listCategory[position]);
                       }),
                 ),
               ]),
